@@ -15,29 +15,38 @@
 			/* force the page to be at least 100% (viewport height) */
 			min-height: 100vh;
 			/* I need overflow: hidden; so my floated children will be forced to tell me how tall they are */
-			float: left;  /* or use 'overflow: hidden; or 'overflow: scroll; to float childrent ot tell parents about the height */
+			overflow: hidden; 
 		}
 
 		/* I make the images no bigger than their parents */
 		img { 
 			max-width: 100%;
-			border: 3px pink dotted;
 		 }
 
 		/* I make th ediv 20% thwidth of my parent */
-		#left {
-			width: 20%;
-			/* I make the div go all the way to the left. I no longer acknowledge my parents */
-			float: left;
+		#top {
+			/* My children(thumbnails) are floating, I need to know how tall the are. OVERFLOW: hidden;!*/
+			overflow: hidden;
+			/* Make me 75% so I don't take up the whole screen */
+			width: 75%;
+			/* To set mey margin to auto so the margin from my width is evely divided on all sides. */
+			margin:auto;
 		}
 		
 		/* I make the div 60% of my parent */
 		#right {
-			width: 60%;
-			/* I make the div go all the way to the left. I no longer acknowledge my parents */
-			float: right;
+
 		}
 		
+		.thumbnail {
+			width: 20%;
+			float: left;
+			box-sizing: border-box;
+		}
+
+		.one {
+			border: 4px purple solid;
+		}
 
 	</style>
 
@@ -55,12 +64,25 @@
 		</div>
 
 		<!-- Make the left hand div for our thumbnails to live in -->
-		<div id="left">
-			<img src="images/image1.jpg" onmouseover="largePic.src='images/image1.jpg'">
-			<img src="images/image2.jpg" onmouseover="largePic.src='images/image2.jpg'">
-			<img src="images/image3.jpg" onmouseover="largePic.src='images/image3.jpg'">
-			<img src="images/image4.jpg" onmouseover="largePic.src='images/image4.jpg'">
-			<img src="images/image5.jpg" onmouseover="largePic.src='images/image5.jpg'">
+		<div id="top">
+			<!-- Add a div to hold a image. Divs are nice because they are blocks. Images are not nice because they are inline.
+			Add the same class to each div so we can target all at the same time.
+			Add a unique class to each div so we can target them individually. -->
+			<div class="thumbnail one">
+				<img src="images/image1.jpg" onmouseover="largePic.src='images/image1.jpg'">
+			</div>
+			<div class="thumbnail two">
+				<img src="images/image2.jpg" onmouseover="largePic.src='images/image2.jpg'">
+			</div>
+			<div class="thumbnail three">
+				<img src="images/image3.jpg" onmouseover="largePic.src='images/image3.jpg'">
+			</div>
+			<div class="thumbnail four">
+				<img src="images/image4.jpg" onmouseover="largePic.src='images/image4.jpg'">
+			</div>
+			<div class="thumbnail five">
+				<img src="images/image5.jpg" onmouseover="largePic.src='images/image5.jpg'">
+			</div>
 		</div>
 
 		<!-- Make the preview box on the right side to populate the thumbnail -->
